@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>青年博客-相册</title>
+    <%- include("./public/head.ejs") %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="/stylesheets/forestage/shards-dashboards.1.1.0.css">
+
+    <script type="text/javascript" src="/javascripts/forestage/jquery.sumoselect.js"></script>
+
+    <link href="/stylesheets/forestage/sumoselect.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.test = $('#tag').SumoSelect({okCancelInMulti:true, captionFormatAllSelected: "Yeah, OK, so everything." });
+
+            $('.SlectBox').on('sumo:opened', function(o) {
+                console.log("dropdown opened", o)
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+<div class="pagebg"> </div>
+<div class="container">
+    <h1 class="t_nav">
+        <span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span>
+        <a href="/" class="n1">网站首页</a>
+        <a href="/" class="n2">相册</a>
+    </h1>
+
+
+    <div class="card card-small">
+        <div class="card-body">
+            <form action="/doAddArticle" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>文章标题</label>
+                        <input class="form-control form-control-lg" name="article_title" type="text" placeholder="文章标题">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="feInputState">文章类别</label>
+                            <select name="sort_id" id="feInputState" class="form-control form-control-lg">
+                            <option selected value="1"></option>
+                            <% for (var i = 0; i < sort.length; i++) { %>
+                                <option value="<%= sort[i].sort_id %>"><%= sort[i].sort_name %></option>
+                            <% } %>
+                            </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label>文章封面</label>
+                        <input type="file" class="form-control form-control-lg" id="avatar" name="avatar" value="">
+                    </div>
+                    <div class="form-group col-md-9">
+                        <label for="feInputState">文章标签</label>
+                        <select id="tag" multiple="multiple" placeholder="Hello im from placeholder"  class="form-control form-control-lg">
+                            <% for (var i = 0; i < tag.length; i++) { %>
+                                <option value="<%= tag[i].tag_name %>"><%= tag[i].tag_name %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
+                <div class="editormd" id="content">
+                    <textarea class="editormd-markdown-textarea" name="article_content"></textarea>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-9">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-lg btn-accent">确认发表文章</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        editormd("content", {
+            placeholder:'本编辑器支持Markdown编辑，左边编写，右边预览',  //默认显示的文字，这里就不解释了
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            path: "/editor.md-master/lib/",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+            theme: "",//工具栏主题
+            previewTheme: "",//预览主题
+            editorTheme: "",//编辑主题
+            saveHTMLToTextarea: true,
+            emoji: false,
+            taskList: true,
+            tocm: true,         // Using [TOCM]
+            tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+            flowChart: true,             // 开启流程图支持，默认关闭
+            sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "/Blog/UploadPic",
+                    // toolbarIcons : function() {  //自定义工具栏，后面有详细介绍
+                    //     return editormd.toolbarModes['simple']; // full, simple, mini
+                    // },
+        });
+    });
+
+    // testEditor.getMarkdown();       // 获取 Markdown 源码
+    // testEditor.getHTML();           // 获取 Textarea 保存的 HTML 源码
+    // testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 watch 且没有开启 saveHTMLToTextarea 时使用
+</script>
+
+</body>
+</html>

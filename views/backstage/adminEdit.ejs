@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<%- include("./public/header.ejs")%>
+
+<!-- 展示内容 -->
+
+<body>
+    <div class="container">
+
+        <form action="/admin/doadminUpdate" method="post">
+            <table class="table table-striped text-center">
+                <thead>
+                <tr>
+                    <th class="text-center">用户ID</th>
+                    <th class="text-center">昵称</th>
+                    <th class="text-center">邮箱</th>
+                    <th class="text-center">性别</th>
+                    <th class="text-center">等级</th>
+                    <th class="text-center">编辑</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td><%= user.user_id %></td>
+                    <td>
+                        <input class="form-control" type="text" name="newUserName" value="<%= user.user_name %>">
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="newUserEmail" value="<%= user.user_email %>">
+                    </td>
+                    <td>
+                        <!--<input class="form-control" type="text" name="newUserSex" value="<%= user.user_sex %>">-->
+                        <select class="selectpicker">
+                            <option class="btn btn-sm btn-primary" value="0">未知</option>
+                            <option class="btn btn-sm btn-info" value="1">男</option>
+                            <option value="2">女</option>
+                        </select>
+
+                    </td>
+                    <td>
+                        <!--<input class="form-control" type="text" name="newUserRank" value="<%= user.user_rank %>">-->
+                        <select class="selectpicker">
+                            <option value="0">管理员用户</option>
+                            <option value="1">普通用户</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input class="btn btn-primary btn-sm" type="submit" value="确认"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

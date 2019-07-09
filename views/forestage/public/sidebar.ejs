@@ -1,0 +1,96 @@
+<div class="sidebar">
+
+    <div class="search">
+        <form action="" method="post" name="searchform" id="searchform">
+            <input name="keyboard" id="keyboard" class="input_text" placeholder="请输入文章标题关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+            <input name="show" value="title" type="hidden">
+            <input name="tempid" value="1" type="hidden">
+            <input name="tbname" value="news" type="hidden">
+            <input name="Submit" class="input_submit" value="搜索" type="submit">
+        </form>
+    </div>
+
+    <div class="cloud">
+        <h2 class="hometitle">标签云</h2>
+        <ul>
+            <% for (var i = 0; i < tag.length; i++) {%>
+                <a href="/"><%= tag[i].tag_name %></a>
+            <%}%>
+        </ul>
+    </div>
+    <div class="zhuanti">
+        <h2 class="hometitle">特别推荐</h2>
+        <ul>
+            <li> <i><img src="/images/banner03.jpg"></i>
+                <p>调用方法 <span><a href="/">阅读</a></span> </p>
+            </li>
+            <li> <i><img src="/images/b04.jpg"></i>
+                <p>5.20 我想对你说 <span><a href="/">阅读</a></span></p>
+            </li>
+            <li> <i><img src="/images/b05.jpg"></i>
+                <p>个人博客，属于我的小世界！ <span><a href="/">阅读</a></span></p>
+            </li>
+        </ul>
+    </div>
+    <div class="tuijian">
+        <h2 class="hometitle">推荐文章</h2>
+        <ul class="tjpic">
+            <i><img src="/images/toppic01.jpg"></i>
+            <p><a href="/">article_title</a></p>
+        </ul>
+        <ul class="sidenews">
+            <li> <i><img src="/images/toppic01.jpg"></i>
+                <p><a href="/">article_title</a></p>
+                <span>2018-05-13</span> </li>
+            <li> <i><img src="/images/toppic02.jpg"></i>
+                <p><a href="/">article_title</a></p>
+                <span>2018-05-13</span> </li>
+            <li> <i><img src="/images/v1.jpg"></i>
+                <p><a href="/">article_title</a></p>
+                <span>2018-05-13</span> </li>
+            <li> <i><img src="/images/v2.jpg"></i>
+                <p><a href="/">article_title</a></p>
+                <span>2018-05-13</span> </li>
+        </ul>
+    </div>
+    <div class="tuijian">
+        <h2 class="hometitle">点击排行</h2>
+        <ul class="tjpic">
+            <i><img src="/images/toppic01.jpg"></i>
+            <p><a href="/">article_title</a></p>
+        </ul>
+        <ul class="sidenews">
+            <li> <i><img src="/images/toppic01.jpg"></i>
+                <p><a href="/">别让这些闹心的套路</a></p>
+                <span>2018-05-13</span> </li>
+            <li> <i><img src="/images/toppic02.jpg"></i>
+                <p><a href="/">article_title</a></p>
+                <span>2018-05-13</span> </li>
+            <li> <i><img src="/images/v1.jpg"></i>
+                <p><a href="/">article_title</a></p>
+                <span>2018-05-13</span> </li>
+            <li> <i><img src="/images/v2.jpg"></i>
+                <p><a href="/">article_title</a></p>
+                <span>2018-05-13</span> </li>
+        </ul>
+    </div>
+    <div class="links">
+        <h2 class="hometitle">友情链接</h2>
+        <ul>
+            <li><a href="/" target="_blank">青年博客</a></li>
+            <li><a href="/" target="_blank">D设计师博客</a></li>
+            <li><a href="/" target="_blank">优秀个人博客</a></li>
+        </ul>
+    </div>
+    <div class="guanzhu" id="follow-us">
+        <h2 class="hometitle">关注小站长</h2>
+        <ul>
+            <li class="sina"><a href="/" target="_blank"><span>新浪微博</span></a><%= admin.user_qq %></li>
+            <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span><%= admin.user_qq %></a></li>
+            <li class="qq"><a href="/" target="_blank"><span>QQ号</span><%= admin.user_qq %></a></li>
+            <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span><%= admin.user_email %></a></li>
+            <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span><%= admin.user_wechat %></a></li>
+            <li class="wx"><img src=""></li>
+        </ul>
+    </div>
+</div>

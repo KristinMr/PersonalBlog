@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>青年博客-个人中心</title>
+    <%- include("./public/head.ejs") %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="/stylesheets/forestage/shards-dashboards.1.1.0.css">
+
+</head>
+<body>
+
+<div class="pagebg"> </div>
+<div class="container">
+    <h1 class="t_nav">
+        <span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span>
+        <a href="/userArticleList" target="main" class="n1">我的文章</a>
+        <a href="/userAlbum" target="main" class="n2">我的相册</a>
+    </h1>
+    <div class="news_infos">
+        <div class="container-fluid">
+            <div class="card card-small mb-4">
+                <div class="card-header border-bottom">
+                    <h6 class="m-0">账号详情</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-3">
+                        <div class="row">
+                            <div class="col">
+                                <form action="/updateUser" method="post">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>头像</label>
+                                            <p class="avatar"><img src="/images/headImage/<%= user.user_avatar %>" alt=""></p>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>上传新头像</label>
+                                            <input type="file" class="form-control" id="avatar" name="avatar" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="feFirstName">昵称</label>
+                                            <input type="text" class="form-control" id="name" placeholder="昵称" value="<%= user.user_name %>"> </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="feLastName">真实姓名</label>
+                                            <input type="text" class="form-control" id="realName" placeholder="真实姓名" value="<%= user.user_realname %>"> </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="feEmailAddress">邮箱地址</label>
+                                            <input type="email" class="form-control" id="feEmailAddress" disabled value="<%= user.user_email %>">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="fePassword">新浪微博</label>
+                                            <input type="tel" class="form-control" id="fePassword" placeholder="新浪微博" value="<%= user.user_microblog %>"> </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="feEmailAddress">QQ</label>
+                                            <input type="text" class="form-control" id="qq" placeholder="QQ号" value="<%= user.user_qq %>"> </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="fePassword">微信</label>
+                                            <input type="text" class="form-control" id="wechat" placeholder="微信号" value="<%= user.user_wechat %>"> </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="feInputCity">常驻城市</label>
+                                            <input type="text" class="form-control" id="feInputCity" value="<%= user.user_city %>"> </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="feInputState">性别</label>
+                                            <select id="feInputState" class="form-control">
+                                                <option selected><%= user.user_sex %></option>
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="feInputAddress">个人标签</label>
+                                        <input type="text" class="form-control" id="perTag" placeholder="个人标签" value="<%= user.user_tag %>">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="feDescription">个人简介</label>
+                                            <textarea class="form-control" name="feDescription" rows="5"><%= user.user_info %></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-accent" style="float:right;">更新账号信息</button>
+                                </form>
+                                <button class="btn btn-accent"><a href="/updateUserPassword" style="color:white;">更新账号密码</a></button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <%- include("./public/userSidebar.ejs") %>
+</div>
+</body>
+</html>
+

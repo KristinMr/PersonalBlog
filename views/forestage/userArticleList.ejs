@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>青年博客-个人中心</title>
+    <%- include("./public/head.ejs") %>
+    <script src="/javascripts/forestage/jquery.min.js"></script>
+    <script src="/javascripts/forestage/index.js"></script>
+    <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+
+    <article>
+    <h1 class="t_nav">
+        <span>您现在的位置是：首页 > 个人文章列表</span>
+        <a href="/userAlbum" target="main" class="n1">我的相册</a>
+        <a href="/userInfo" target="main" class="n2">我的信息</a>
+    </h1>
+
+    <div class="blogsbox">
+        <% for (var i = 0;i < article.length;i++) { %>
+            <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+                <h3 class="blogtitle">
+                    <a href="/detail/<%= article[i].article_id %>" target="main">
+                        <%= article[i].article_title %>
+                    </a>
+                    <a style="float:right;" onclick="doArticleDelete(<%= article[i].article_id %>)">
+                        删除
+                    </a>
+                    <a style="float:right;">
+                        &nbsp;&nbsp;&nbsp;
+                    </a>
+
+                    <a href="/updateArticle/<%= article[i].article_id %>" target="main" style="float:right;">
+                        修改
+                    </a>
+                </h3>
+                <span class="blogpic"><a href="/detail/<%= article[i].article_id %>" title="" target="main"><img
+                                src="/images/articleCover/<%= article[i].article_cover %>" alt=""></a></span>
+                <a href="/detail/<%= article[i].article_id %>" target="main"><p
+                            class="blogtext"><%= article[i].article_content %></p></a>
+                <div class="bloginfo">
+                    <ul>
+                        <li class="author"><a href="/userInfo" target="main"><%= user.user_name %></a></li>
+                        <li class="lmname"><a href="/">IT技术</a></li>
+                        <li class="timer"><%= article[i].article_time.toLocaleDateString() %></li>
+                        <li class="view"><span><%= article[i].click_number %></span>已阅读</li>
+                        <li class="like"><%= article[i].collect_number %></li>
+                    </ul>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+
+<div class="sidebar">
+    <div class="search">
+        <form action="/" method="post" name="searchform" id="searchform">
+            <input name="keyboard" id="keyboard" class="input_text" placeholder="请输入文章标题关键字"
+                   style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}"
+                   onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+            <input name="show" value="title" type="hidden">
+            <input name="tempid" value="1" type="hidden">
+            <input name="tbname" value="news" type="hidden">
+            <input name="Submit" class="input_submit" value="搜索" type="submit">
+        </form>
+    </div>
+
+</div>
+<%- include("./public/userSidebar.ejs") %>
+
+</article>
+
+    <script type="text/javascript">
+        function doArticleDelete(t) {
+            var id = t;
+            layer.confirm("确定删除？", {btn: ["确定", "取消"]},
+                function () {
+                    layer.closeAll();
+                    $.ajax({
+                        url: "/doDeleteArticle/?id=" + id,
+                        type: "POST",
+                        success: function () {
+                            window.location.href = "/userArticleList"
+                        }
+                    });
+                },
+                function () {
+                    layer.closeAll();
+                });
+        }
+    </script>
+
+</div>
+
+</body>
+</html>

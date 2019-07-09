@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>青年博客-关于站长</title>
+    <%- include("./public/head.ejs") %>
+</head>
+
+<body>
+
+<div class="pagebg"> </div>
+<div class="container">
+    <h1 class="t_nav"><span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">关于我</a></h1>
+    <div class="news_infos">
+        admin_info
+    </div>
+    <div class="sidebar">
+        <div class="about">
+            <p class="avatar"> <img src="/images/headImage/<%= admin.user_avatar %>" alt=""> </p>
+            <p class="abname"><%= admin.user_name %></p>
+            <p class="abposition"><%= admin.user_tag %></p>
+            <p class="abtext"><%= admin.user_info %></p>
+        </div>
+        <div class="weixin">
+            <h2 class="hometitle">微信关注</h2>
+            <ul>
+                <img src="">
+            </ul>
+        </div>
+        <div class="guanzhu" id="follow-us">
+            <h2 class="hometitle">关注小站长</h2>
+            <ul>
+                <li class="sina"><a href="/" target="_blank"><span>新浪微博</span></a><%= admin.user_qq %></li>
+                <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span><%= admin.user_qq %></a></li>
+                <li class="qq"><a href="/" target="_blank"><span>QQ号</span><%= admin.user_qq %></a></li>
+                <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span><%= admin.user_email %></a></li>
+                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span><%= admin.user_wechat %></a></li>
+                <li class="wx"><img src=""></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+

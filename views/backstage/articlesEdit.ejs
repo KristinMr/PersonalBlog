@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<%- include("./public/header.ejs")%>
+
+<!-- 展示内容 -->
+
+<body>
+    <div class="container">
+        <form action="/admin/doArticleEdit" method="post">
+            <table class="table table-striped text-center">
+                <thead>
+                <tr>
+                    <th class="text-center">articleID</th>
+                    <th class="text-center">articleTitle</th>
+                    <th class="text-center">articleDate</th>
+                    <th class="text-center">authorName</th>
+                    <th class="text-center">Edit</th>
+                </tr>
+                </thead>
+                <% for (var i = 0; i < article.length; i++) {%>
+                <tr>
+                    <td><%= article[i].article_id %></td>
+                    <td><%= article[i].article_title %></td>
+                    <td><%= article[i].article_time.toLocaleDateString() %></td>
+                    <td><%= article[i].author_name %></td>
+                    <td>
+                        <input class="btn btn-info btn-sm" type="button" onclick="doArticleDelete(this)" value="Delete"/>
+                        <!--<input class="btn btn-info btn-sm" type="submit" value="Change"/>-->
+                        <a href="/admin/doArticleEdit/<%= article[i].article_id%>"><input class="btn btn-info btn-sm" type="button" value="Change"/></a>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </form>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    function doArticleDelete(t) {
+        var id = $(t).parents('tr').find('td:first').text()
+        layer.confirm("确定删除？", {btn: ["确定", "取消"]},
+            function () {
+                layer.closeAll();
+                // window.location.href="/user/doupdate";
+                $.ajax({
+                    url: "/admin/doArticleDelete/?id=" + id,
+                    type: "POST",
+                    success: function () {
+                        window.location.href = "/admin/articlesEdit"
+
+                    }
+                });
+            },
+            function () {
+                layer.closeAll();
+            });
+    }
+    function doArticleChange() {
+
+    }
+
+
+</script>
+</html>

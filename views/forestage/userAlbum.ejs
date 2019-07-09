@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>青年博客-相册</title>
+    <%- include("./public/head.ejs") %>
+</head>
+<body>
+<div class="pagebg"> </div>
+<div class="container">
+    <h1 class="t_nav">
+        <span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span>
+        <a href="/userArticleList" target="main" class="n1">我的文章</a>
+        <a href="/userInfo" target="main" class="n2">关于我</a>
+    </h1>
+
+    <div class="picshow">
+        <ul>
+            <% for (var i = 0; i < 10; i++) { %>
+                <li><a href="/pictureList" target="main"><i><img src="/images/b01.jpg"></i>
+                        <div class="font">
+                            <h3>album_name</h3>
+                            <p>总共有10张图片</p>
+                        </div>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

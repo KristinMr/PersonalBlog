@@ -1,0 +1,23 @@
+{
+  "name": "personalblog",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "editor.md": "^1.5.0",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-session": "^1.16.1",
+    "http-errors": "~1.6.3",
+    "markdown": "^0.5.0",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "marked": "^0.6.2",
+    "multiparty": "^4.2.1"
+  }
+}

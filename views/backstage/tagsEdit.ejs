@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<%- include("./public/header.ejs")%>
+
+<!-- 展示内容 -->
+
+<body>
+<div class="container">
+    <form action="/admin/doTagEdit" method="post">
+        <table class="table table-striped text-center">
+            <thead>
+            <tr>
+                <th class="text-center">tagID</th>
+                <th class="text-center">tagName</th>
+                <th class="text-center">Edit</th>
+            </tr>
+            </thead>
+            <% for (var i = 0; i < tag.length; i++) {%>
+                <tr>
+                    <td><%= tag[i].tag_id %></td>
+                    <td><%= tag[i].tag_name %></td>
+                    <td>
+                        <input class="btn btn-info btn-sm" type="button" onclick="doTagDelete(this)" value="Delete"/>
+                        <!--<input class="btn btn-info btn-sm" type="submit" value="Change"/>-->
+                        <a href="/admin/doTagEdit/<%= tag[i].tag_id%>"><input class="btn btn-info btn-sm" type="button" value="Change"/></a>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    </form>
+</div>
+
+</body>
+
+<script type="text/javascript">
+    function doTagDelete(t) {
+        var id = $(t).parents('tr').find('td:first').text()
+        layer.confirm("确定删除？", {btn: ["确定", "取消"]},
+            function () {
+                layer.closeAll();
+                // window.location.href="/user/doupdate";
+                $.ajax({
+                    url: "/admin/doTagDelete/?id=" + id,
+                    type: "POST",
+                    success: function () {
+                        window.location.href = "/admin/tagsEdit"
+                    }
+                });
+            },
+            function () {
+                layer.closeAll();
+            });
+    }
+</script>
+</html>

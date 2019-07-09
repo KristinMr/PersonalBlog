@@ -1,0 +1,19 @@
+<div class="sidebar">
+    <div class="about">
+        <p class="avatar"> <img src="/images/headImage/<%= user.user_avatar %>" alt=""> </p>
+        <p class="abname"><%= user.user_name %></p>
+        <p class="abposition"><%= user.user_tag %></p>
+        <p class="abtext"><%= user.user_info %></p>
+    </div>
+    <div class="guanzhu" id="follow-us">
+        <h2 class="hometitle">关注<%= user.user_name %></h2>
+        <ul>
+            <li class="sina"><a href="/" target="_blank"><span>新浪微博</span></a><%= user.user_microblog %></li>
+            <!--<li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>ccc</a></li>-->
+            <li class="qq"><a href="/" target="_blank"><span>QQ号</span><%= user.user_qq %></a></li>
+            <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span><%= user.user_email %></a></li>
+            <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span><%= user.user_wechat %></a></li>
+            <li class="wx"><img src=""></li>
+        </ul>
+    </div>
+</div>

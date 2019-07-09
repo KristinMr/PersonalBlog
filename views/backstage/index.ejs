@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<%- include("./public/header.ejs")%>
+
+<body style="">
+
+<%- include("./public/navbar.ejs")%>
+<%- include("./public/sidebar.ejs")%>
+
+<!--  导航 -->
+
+<ul class="breadcrumb" id="bread">
+    <li><a href=""><i class="fa fa-home"></i>首页</a></li>
+</ul>
+
+<!-- 展示内容 -->
+<div id="content">
+    <iframe src="/admin/content" frameborder="0" id="iframe" name="content" scrolling="yes"></iframe>
+</div>
+
+</body>
+</html>
