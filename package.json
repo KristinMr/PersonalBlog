@@ -17,7 +17,7 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "marked": "^0.6.2",
+    "marked": "^4.0.10",
     "multiparty": "^4.2.1"
   }
 }
